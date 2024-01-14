@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <img class="card" style="width: 18rem; display: block; margin: 0 auto; margin-top: 5%;" src="{{ qrcode(data_to_qr.url) }}">
+{% endblock %}

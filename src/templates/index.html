@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br>
+    <div class="container-sm">
+        <a href="http://127.0.0.1:8000/login">http://127.0.0.1:8000/login</a> - аутентификация </br> </br>
+        <a href="http://127.0.0.1:8000/check/login">http://127.0.0.1:8000/check/login</a> - проверка аутентификации. <p>Имеет <strong>"query string"</strong> параметр <mark>phone=79092991111</mark></p> </br>
+        <a href="http://127.0.0.1:8000/messages">http://127.0.0.1:8000/messages</a> - просмотр сохраненных сообшений  <p> <code>GET</code> имеет <strong>"query string"</strong> параметр <mark>name=username</mark></p>
+        и отправка новых 
+        <code>
+            POST<br>
+            {<br>
+                "message_text": "привет! я затестил твое задание",<br>
+                "from_phone": "790929911111",<br>
+                "username": "Artem4_8"<br>
+            }<br>
+        </code>
+    </div>
+
+    <div class="container-xxl">
+        <h3>P.S.</h3><p><code>Quart</code> выбран из за его асинхроности в отличие от <code>Flask</code>, для более упрощенноой совместимости с <code>Telethon</code>. </br>
+        Скорее всего я понял часть задания не верно. В частности для чего указывать номер при аутентификации по qr.</br> 
+        И в следствии этого часть логики будет неверной или ошибочной:</p>
+        • Например <code>/login</code> будет работать только с методом <code>GET</code> так как ему не требуется
+        номер телефона.</br> </br>
+
+        • <code>/check/login?phone=79092991111</code> в следствии этого имеет не совсем понятную логику действий </br> </br>
+
+        • <code>POST /messages</code> не как не использует "<code>from_phone</code>" </br>
+        Подразумевается, что сообщение должно отправляться от клиента, который имеет номер "<code>from_phone</code>"? </br> </br>
+
+        • В следствии того что часть логики скорее всего ошибочна, писать тесты не стал... </br> </br>
+
+        В остальном функционал задания выполнен.</br> </br>
+
+
+    <p><mark>Если есть замечание и желание поделиться комментариями по коду и не только, прошу написать на <a href="https://t.me/Artem4_8">Телеграм</a> или <a href="mailto:avtorca4@gmail.com">gmail</a></mark></p>
+    </div>
+{% endblock %}
